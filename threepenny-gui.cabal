@@ -105,6 +105,7 @@ Library
                     ,Paths_threepenny_gui
   extensions:        CPP
   cpp-options:      -DCABAL
+  pkgconfig-depends: zlib
   if flag(rebug)
       cpp-options:  -DREBUG
       ghc-options:  -O2
