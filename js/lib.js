@@ -46,6 +46,11 @@ Haskell.on = function (el, eventType, fun) {
       fun(e.keyCode);
       return true;
     });
+  } else if(eventType.match('wheel')) {
+    $(el).on(eventType, function(e) {
+      fun([e.deltaX, e.deltaY, e.deltaZ]);
+      return true;
+    });
   } else {
     $(el).on(eventType, function(e) {
       fun(e.which ? [e.which.toString()] : e.detail || []);
