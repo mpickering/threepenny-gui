@@ -48,7 +48,7 @@ Haskell.on = function (el, eventType, fun) {
     });
   } else if(eventType.match('wheel')) {
     $(el).on(eventType, function(e) {
-      fun([e.deltaX, e.deltaY, e.deltaZ]);
+      fun([e]);
       return true;
     });
   } else {
