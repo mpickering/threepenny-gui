@@ -29,13 +29,16 @@ Haskell.on = function (el, eventType, fun) {
       fun(x.toString());
     });
   } else if (eventType.match('dragstart|dragenter|dragover|dragleave|drag|drop|dragend')) {
+    
     $(el).on(eventType, function(e) {
+      e.stopPropagation()
       fun( e.originalEvent.dataTransfer
             ? [e.originalEvent.dataTransfer.getData("dragData")]
             : [] );
     });
   } else if(eventType.match('contextmenu|mousemove|mousedown|mouseup')) {
     $(el).on(eventType, function(e) {
+      e.stopPropagation()
       var offset = $(this).offset();
       var x      = e.pageX - offset.left;
       var y      = e.pageY - offset.top;
@@ -43,6 +46,7 @@ Haskell.on = function (el, eventType, fun) {
     });
   } else if(eventType.match('keydown|keyup')) {
     $(el).on(eventType, function(e) {
+      e.stopPropagation()
       fun(e.keyCode);
       return true;
     });
